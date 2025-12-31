@@ -49,8 +49,8 @@ body{
 }
 
 .brand{
-  font-weight:900;
-  font-size: 28px;
+  font-weight:600;
+  font-size: clamp(16px, 4vw, 28px);
   letter-spacing:0.4px;
   background: linear-gradient(180deg, #ffd700 0%, #ffed4e 50%, #d4af37 100%);
   -webkit-background-clip: text;
