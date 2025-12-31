@@ -10,17 +10,16 @@
 <body>
   <header class="topnav">
     <div class="brand">East Hampton Chinese New Year</div>
-    <nav class="navlinks" aria-label="Primary">
-      <!-- ...existing code... -->
+    <nav aria-label="Primary">
       <div class="nav-menu">
         <button id="menu-button" class="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">Menu ▾</button>
-        <ul id="menu-list" class="dropdown" role="menu" hidden>
-          <li role="none"><a role="menuitem" href="#" data-src="2026.html">2026</a></li>
-          <li role="none"><a role="menuitem" href="#" data-src="2025.html">2025</a></li>
-          <li role="none"><a role="menuitem" href="#" data-src="chineseZodiac.html">Chinese zodiac</a></li>
+        <ul id="menu-list" class="dropdown" role="menu"  class="navlinks" hidden>
+          <li role="none"><a role="menuitem" href="#" data-src="2026.html" class="navlinks" >2026</a></li>
+          <li role="none"><a role="menuitem" href="#" data-src="2025.html" class="navlinks" >2025</a></li>
+          <li role="none"><a role="menuitem" href="#" data-src="chineseZodiac.html" class="navlinks" >Chinese zodiac</a></li>
         </ul>
       </div>
-      <!-- ...existing code... -->
+
     </nav>
   </header>
 
@@ -41,12 +40,30 @@
         btn.setAttribute('aria-expanded', 'false');
         menu.hidden = true;
       }
+
+      // sync active menu item with the iframe src
+      function setActiveFromFrame() {
+        const frame = document.getElementById('content-frame');
+        const current = frame ? frame.getAttribute('src') : null;
+        menu.querySelectorAll('a[role="menuitem"]').forEach(el => {
+          el.removeAttribute('aria-current');
+          el.classList.remove('active');
+        });
+        if (current) {
+          const match = menu.querySelector('a[data-src="' + current + '"]');
+          if (match) {
+            match.setAttribute('aria-current', 'page');
+            match.classList.add('active');
+          }
+        }
+      }
+
       function openMenu() {
         btn.setAttribute('aria-expanded', 'true');
         menu.hidden = false;
-        // focus first item
-        const first = menu.querySelector('a[role="menuitem"]');
-        if (first) first.focus();
+        // focus the active/current item if present; don't force-focus the first item
+        const active = menu.querySelector('a[aria-current="page"]');
+        if (active) active.focus();
       }
 
       btn.addEventListener('click', (e) => {
@@ -65,14 +82,29 @@
         }
       });
 
+      // set iframe src and update active state when a menu item is clicked
       menu.addEventListener('click', (e) => {
         const a = e.target.closest('a[role="menuitem"]');
         if (!a) return;
         e.preventDefault();
         const src = a.dataset.src;
-        if (src) document.getElementById('content-frame').src = src;
+        if (src) {
+          document.getElementById('content-frame').src = src;
+          // mark this item as active immediately
+          menu.querySelectorAll('a[role="menuitem"]').forEach(el => {
+            el.removeAttribute('aria-current');
+            el.classList.remove('active');
+          });
+          a.setAttribute('aria-current', 'page');
+          a.classList.add('active');
+        }
         closeMenu();
       });
+
+      // initialize active state and keep it in sync with iframe loads
+      setActiveFromFrame();
+      const iframe = document.getElementById('content-frame');
+      if (iframe) iframe.addEventListener('load', setActiveFromFrame);
     })();
   </script>
 

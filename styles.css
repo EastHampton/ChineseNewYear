@@ -85,6 +85,13 @@ body{
   transform: translateY(-2px);
 }
 
+/* Ensure nav spans remaining space so the Menu button can align to the far right of the header */
+.topnav nav{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
 
 .menu-button {
   padding: 8px 12px;
@@ -108,7 +115,6 @@ body{
   color: var(--gold2);
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
   filter: drop-shadow(0 1px 1px rgba(255,255,255,0.2));
-  font-family: 'Festive', cursive;
   transition: all 0.18s ease;
 }
 /* Use focus-visible to show a gold ring for keyboard focus, and remove the blue outline on mouse click */
@@ -124,17 +130,24 @@ body{
   filter: drop-shadow(0 4px 14px rgba(255,215,0,0.18));
   background: linear-gradient(180deg, rgba(220,40,60,0.98) 0%, rgba(200,20,50,0.96) 50%, rgba(180,10,40,0.94) 100%);
 } 
+/* anchor the dropdown to the nav-menu container so it appears directly under the button */
+.nav-menu {
+  margin-left: auto;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
 .dropdown {
   position: absolute;
-  right: 24px;
-  top: calc(var(--nav-height, 56px) + 8px);
+  right: 0; /* align dropdown's right edge with the menu container */
+  top: calc(100% + 8px); /* appear just below the menu-button */
   margin: 0;
-  padding: 8px 0;
+  padding: 6px 0;
   list-style: none;
   background: linear-gradient(180deg, rgba(180,10,40,0.98) 0%, rgba(160,0,30,0.95) 100%);
   border: 1px solid rgba(0,0,0,0.3);
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  min-width: 220px;
+  min-width: 200px;
   z-index: 200;
   border-radius: 8px;
 }
