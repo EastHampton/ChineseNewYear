@@ -6,26 +6,21 @@
   <title>East Hampton Chinese New Year Party — Home</title>
   <link href="fonts.googleapis.com" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Page-specific styles for index.html */
-    .hero{
-      background-image: url('chinesehorse.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: scroll;
-      min-height: calc(100vh - var(--nav-height));
-      padding: var(--nav-height) 24px 24px 24px;
-    }
-  </style>
-</head>
+ </head>
 <body>
   <header class="topnav">
     <div class="brand">East Hampton Chinese New Year</div>
     <nav class="navlinks" aria-label="Primary">
-      <a href="#" onclick="document.getElementById('content-frame').src='2026.html'; return false;">2026</a>
-      <a href="#" onclick="document.getElementById('content-frame').src='2025.html'; return false;">2025</a>
-      <a href="#" onclick="document.getElementById('content-frame').src='chineseZodiac.html'; return false;">Chinese zodiac</a>
+      <!-- ...existing code... -->
+      <div class="nav-menu">
+        <button id="menu-button" class="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">Menu ▾</button>
+        <ul id="menu-list" class="dropdown" role="menu" hidden>
+          <li role="none"><a role="menuitem" href="#" data-src="2026.html">2026</a></li>
+          <li role="none"><a role="menuitem" href="#" data-src="2025.html">2025</a></li>
+          <li role="none"><a role="menuitem" href="#" data-src="chineseZodiac.html">Chinese zodiac</a></li>
+        </ul>
+      </div>
+      <!-- ...existing code... -->
     </nav>
   </header>
 
@@ -34,6 +29,52 @@
     <iframe id="content-frame" src="2026.html" style="display:block; width:100%; height:100%; border:none; margin:0; padding:0;"></iframe>
   </main>
 
+  
+  <script>
+    // Dropdown behavior: toggle, close on outside click / Escape, load iframe on selection
+    (function () {
+      const btn = document.getElementById('menu-button');
+      const menu = document.getElementById('menu-list');
+      if (!btn || !menu) return;
+
+      function closeMenu() {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+      }
+      function openMenu() {
+        btn.setAttribute('aria-expanded', 'true');
+        menu.hidden = false;
+        // focus first item
+        const first = menu.querySelector('a[role="menuitem"]');
+        if (first) first.focus();
+      }
+
+      btn.addEventListener('click', (e) => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeMenu(); else openMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+          btn.focus();
+        }
+      });
+
+      menu.addEventListener('click', (e) => {
+        const a = e.target.closest('a[role="menuitem"]');
+        if (!a) return;
+        e.preventDefault();
+        const src = a.dataset.src;
+        if (src) document.getElementById('content-frame').src = src;
+        closeMenu();
+      });
+    })();
+  </script>
 
 </body>
 </html>

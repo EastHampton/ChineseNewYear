@@ -61,16 +61,6 @@ body{
   font-family: 'Festive', cursive;
 }
 
-
-@keyframes gold-shimmer {
-  0%, 100% {
-    background-position: 200% 0;
-  }
-  50% {
-    background-position: 0 0;
-  }
-}
-
 .navlinks{
   margin-left:auto;
   display:flex;
@@ -84,18 +74,92 @@ body{
   -webkit-text-fill-color: transparent;
   text-decoration:none;
   padding:8px 12px;
-  border-radius:6px;
-  border:1px solid rgba(255,215,0,0.2);
   font-weight:600;
   filter: drop-shadow(0 1px 1px rgba(255,255,255,0.15));
   transition: all 0.3s ease;
 }
 
 .navlinks a:hover{
-  border:1px solid rgba(255,215,0,0.6);
   background-color:rgba(255,215,0,0.15);
   filter: drop-shadow(0 2px 4px rgba(255,215,0,0.4));
   transform: translateY(-2px);
+}
+
+
+.menu-button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,215,0,0.2);
+
+  border-radius:6px;
+  border:1px solid rgba(255,215,0,0.2);
+
+  cursor: pointer;
+  font-weight:480;
+  font-size: 16px;
+  letter-spacing:0.4px;
+  background: linear-gradient(180deg, 
+    rgba(200,20,50,0.98) 0%, 
+    rgba(180,10,40,0.96) 20%,
+    rgba(160,0,30,0.94) 50%,
+    rgba(140,0,20,0.92) 80%,
+    rgba(100,0,10,0.9) 100%);
+  /* Use solid gold text (do not clip the red background into the text) */
+  color: var(--gold2);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  filter: drop-shadow(0 1px 1px rgba(255,255,255,0.2));
+  font-family: 'Festive', cursive;
+  transition: all 0.18s ease;
+}
+/* Use focus-visible to show a gold ring for keyboard focus, and remove the blue outline on mouse click */
+.menu-button:focus { outline: none; }
+.menu-button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(255,215,0,0.26);
+  border-color: rgba(255,215,0,0.6);
+  transform: translateY(-1px);
+}
+.menu-button:hover {
+  border: 1px solid rgba(255,215,0,0.6);
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 14px rgba(255,215,0,0.18));
+  background: linear-gradient(180deg, rgba(220,40,60,0.98) 0%, rgba(200,20,50,0.96) 50%, rgba(180,10,40,0.94) 100%);
+} 
+.dropdown {
+  position: absolute;
+  right: 24px;
+  top: calc(var(--nav-height, 56px) + 8px);
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: linear-gradient(180deg, rgba(180,10,40,0.98) 0%, rgba(160,0,30,0.95) 100%);
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  min-width: 220px;
+  z-index: 200;
+  border-radius: 8px;
+}
+.dropdown a {
+  display: block;
+  padding: 10px 18px;
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--gold1), var(--gold2) 40%, var(--gold3) 70%, var(--gold4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight:600;
+  text-decoration: none;
+  border-radius: 6px; /* gentle rounding for spacing without looking like a button */
+}
+.dropdown a:hover,
+.dropdown a:focus {
+  /* remove filled highlight so links read as gold text over the red panel */
+  background: transparent;
+  color: transparent;
+  background-image: linear-gradient(90deg, #fff9e0, #ffd700 40%, #ffb300 70%, #fff2c8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 6px rgba(255,215,0,0.06);
 }
 
 main{
@@ -119,17 +183,6 @@ p{
   opacity:0.95;
 }
 
-/* Gold glitter text (applies to most textual elements, excluding tables) 
-body *:not(table):not(thead):not(tbody):not(th):not(td):not(tr) {
-  color: transparent !important;
-  background-image: linear-gradient(90deg, var(--gold1), var(--gold2) 40%, var(--gold3) 70%, var(--gold4));
-  background-size: 300% 100%;
-  background-position: 50% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 0 10px rgba(255,215,0,0.6), 0 0 22px rgba(255,200,0,0.18);
-}*/
 
 /* Keep form controls readable */
 button, input, textarea, select {
