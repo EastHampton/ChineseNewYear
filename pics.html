@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>East Hampton Chinese New Year Party — Decorations</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific styles for chineseZodiac.html */
+    body{
+      background-image: url('ruyi.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+     }
+    
+    .content{
+      height:auto;
+      flex-direction: column;
+      align-items:center;
+      justify-content:flex-start;
+      padding: 32px 24px;
+      overflow-y: auto;
+      max-height: 100vh;
+      align-items: flex-start; /* Keeps content left-aligned */
+    }
+    
+    table{
+      width:100%;
+      max-width:1200px;
+      border-collapse: collapse;
+     /* background: rgba(0,0,0,0.7);
+      margin: 20px 10px; */
+     /* border: 2px solid #ffd700; */
+     border: none; /* Removes all borders from table, th, and td elements */
+    border-collapse: collapse; /* Ensures single borders collapse, which works well with 'none' */
+    table-layout: auto; /* Allows columns to shrink to fit text */
+    }
+    
+    th, td{
+      padding: 12px;
+      text-align: left;
+     /* border: 1px solid rgba(139,0,0,0.5); */
+      color: #dc143c;
+      background-image: none !important;
+      -webkit-text-fill-color: #8B0011 !important;
+    /*  text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 6px rgba(220,20,60,0.4); */
+    }
+    
+    th{
+      background: linear-gradient(180deg, #dc143c 0%, #b71c1c 50%, #8b0000 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    /*    border-bottom: 2px solid #dc143c; */
+      color: #dc143c !important;
+    }
+    
+  /*  tr:nth-child(even){
+      background: rgba(255,215,0,0.05);
+    }*/
+    
+    tr:hover{
+      background: rgba(252,228,225,0.5);
+    }
+
+    h1,h2{
+      color:#dc143c !important;
+      -webkit-text-fill-color:#8B0011 !important;
+      background:none !important;
+     /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4); */
+    }
+    
+    p{
+      color:#dc143c !important;
+      -webkit-text-fill-color:#8B0011 !important;
+      background:none !important;
+     /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4);*/
+    }
+
+/* Responsive font sizes for small screens */
+@media (max-width: 520px) {
+  h1 { font-size: clamp(20px, 6vw, 32px); }
+  h2 { font-size: clamp(16px, 4vw, 24px); }
+  td, th { padding: 8px; font-size: 14px; }
+}
+
+.photo-album {
+  display: grid;
+  /* This creates columns that are at least 250px wide */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.photo-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background: #f9f9f9;
+}
+
+.photo-item:hover {
+  transform: scale(1.03); /* Subtle zoom effect on hover */
+}
+
+.photo-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Ensures images don't look stretched */
+  display: block;
+}
+
+.caption {
+  padding: 10px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Style the background overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+/* Style the enlarged image */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  margin-top: 5%;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+  /* Caption styles for lightbox: centered under the image */
+  #caption {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    padding-top: 10px;
+    word-wrap: break-word;
+  }
+
+  /* Small-screen adjustments */
+  @media (max-width: 520px) {
+    #caption {
+      font-size: 14px;
+      max-width: 90%;
+      padding-top: 8px;
+    }
+    .modal-content {
+      max-width: 95%;
+      max-height: 70%;
+      margin-top: 4%;
+    }
+  }
+
+  </style>
+</head>
+<body>
+
+<div id="lightbox" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="full-img">
+  <div id="caption"></div>
+</div>
+
+<div class="photo-album">
+  <div class="photo-item">
+    <img src="./pic/door.jpg" alt="Front door decorated for Chinese New Year">
+    <p class="caption">Laterns and Banner</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/snack.jpg" alt="Snacks">
+    <p class="caption">Snacks</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/food.jpg" alt="Food">
+    <p class="caption">Yummy Food</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/performance.jpg" alt="Performance">
+    <p class="caption">Peiking OperaPerformance</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/writing.jpg" alt="writing">
+    <p class="caption">Calligraphy</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/crafting.jpg" alt="crafting">
+    <p class="caption">Paper Cutting</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/2024_1.jpg" alt="2024_1">
+    <p class="caption">Moments from 2024</p>
+  </div>
+  <div class="photo-item">
+    <img src="./pic/2024_2.jpg" alt="2024_2">
+    <p class="caption">Moments from 2024</p>
+  </div>
+  </div>
+<script>
+// Get elements
+const modal = document.getElementById("lightbox");
+const modalImg = document.getElementById("full-img");
+const captionText = document.getElementById("caption");
+const closeBtn = document.querySelector(".close");
+
+// Add click event to all gallery images
+document.querySelectorAll('.photo-item img').forEach(image => {
+  image.onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src; // Set the large image to the same as the clicked one
+    captionText.innerHTML = this.alt; // Use alt text as caption
+  }
+});
+
+// Close when the 'X' is clicked
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Close when clicking anywhere outside the image
+modal.onclick = function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+}
+    
+</script>
+</body>
+</html>
