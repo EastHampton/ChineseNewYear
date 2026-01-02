@@ -20,13 +20,13 @@
       margin: 20px auto;
       /* glass-like semi-transparent panel 
       background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5));*/
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.0);
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.22);
       overflow: hidden;
       position: relative;
       -webkit-backdrop-filter: blur(4px) saturate(1.10);
-      backdrop-filter: blur(4px) saturate(1.10);
+      backdrop-filter: blur(3px) saturate(1.15);
       border: 1px solid rgba(255,255,255,0.2);
       background-clip: padding-box; /* avoid border blending */
     }
@@ -155,7 +155,6 @@
 <body>
 
     <div class="content">
-      <h2 style="text-align:center; margin-top:32px; color:#8B0011; -webkit-text-fill-color:#8B0011; background:none;">Chinese New Year Decorations</h2>
       <section class="slideshow" aria-label="Decoration slideshow">
         <div class="slides">
 
@@ -191,6 +190,26 @@
             </div>
           </article>
 
+          <article class="slide" data-title="chineseKnot" data-desc="chineseKnot">
+            <h3 class="caption">Chinese knot 中国结</h3>
+            <img src="deco/chineseKnot.png" alt="chineseKnot">
+            <div class="caption">
+              <p>Chinese knots are intricate, decorative cords symbolizing good fortune, unity, and prosperity, prominently used during Lunar New Year as
+                 auspicious decorations to bring luck, ward off evil, and express blessings for a happy future, often made in lucky red, and hung on doors,
+                 walls, or given as gifts. </p>
+            </div>
+          </article>
+
+          <article class="slide" data-title="flowers" data-desc="flowers">
+            <h3 class="caption">Spring blossom 迎春花</h3>
+            <img src="deco/flower.jpg" alt="flowers">
+            <div class="caption">
+              <p>Flowers and plants are essential decorations for the Lunar New Year, representing the arrival of spring and the blossoming of new opportunities.
+                 Homes are often adorned with a vibrant selection of peonies, orchids, and narcissus, alongside festive peach blossoms and miniature mandarin trees.
+              </p>
+            </div>
+          </article>
+
         </div>
 
         <button class="prev" aria-label="Previous slide"><span class="arrow" aria-hidden="true">‹</span></button>
@@ -199,8 +218,7 @@
         <div class="dots" role="tablist" aria-label="Slide indicators"></div>
       </section>
 
-      <p style="text-align:center;color:#222;opacity:0.9;margin-top:12px;font-size:0.95rem;">Tip: replace the image paths in the slideshow with your actual images inside the <code>pic/</code> folder.</p>
-    </div>
+     </div>
 
     <script>
     (function(){
