@@ -6,96 +6,271 @@
   <title>East Hampton Chinese New Year Party — Decorations</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page-specific styles for chineseZodiac.html */
+    /* Page-specific styles for decoration.html */
     body{
       background-image: url('ruyi.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
      }
-    
-    .content{
-      height:auto;
-      flex-direction: column;
-      align-items:center;
-      justify-content:flex-start;
-      padding: 32px 24px;
-      overflow-y: auto;
-      max-height: 100vh;
-      align-items: flex-start; /* Keeps content left-aligned */
+
+    /* Slideshow styles */
+    .slideshow{
+      max-width: 900px;
+      margin: 20px auto;
+      /* glass-like semi-transparent panel 
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5));*/
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      overflow: hidden;
+      position: relative;
+      -webkit-backdrop-filter: blur(4px) saturate(1.10);
+      backdrop-filter: blur(4px) saturate(1.10);
+      border: 1px solid rgba(255,255,255,0.2);
+      background-clip: padding-box; /* avoid border blending */
     }
-    
-    table{
-      width:100%;
-      max-width:1200px;
-      border-collapse: collapse;
-     /* background: rgba(0,0,0,0.7);
-      margin: 20px 10px; */
-     /* border: 2px solid #ffd700; */
-     border: none; /* Removes all borders from table, th, and td elements */
-    border-collapse: collapse; /* Ensures single borders collapse, which works well with 'none' */
-    table-layout: auto; /* Allows columns to shrink to fit text */
+
+    /* Increased slide height to allow longer descriptions */
+    .slides{ position: relative; height: 760px; min-height: 520px; }
+
+    .slide{
+      display: none;
+      position: absolute;
+      inset: 0;
+      padding: 12px 24px 24px; /* reduced top padding to fit more content */
+      box-sizing: border-box;
+      overflow-y: auto; /* allow long captions to scroll within the slide */
     }
-    
-    th, td{
-      padding: 12px;
-      text-align: left;
-     /* border: 1px solid rgba(139,0,0,0.5); */
-      color: #dc143c;
-      background-image: none !important;
-      -webkit-text-fill-color: #8B0011 !important;
-    /*  text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 6px rgba(220,20,60,0.4); */
+
+    .slide img{
+      max-height: 440px; /* slightly larger image allowed while keeping room for text */
+      width: auto;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto 12px;
+      border-radius: 6px;
     }
-    
-    th{
-      background: linear-gradient(180deg, #dc143c 0%, #b71c1c 50%, #8b0000 100%);
+
+    .caption{ text-align: center; padding: 8px 16px; }
+    .caption h2{ margin: 6px 0; font-size: 1.25rem; }
+    .caption p{ margin: 0; color: #333; }
+
+    .slide.active{ display: block; animation: fadeIn 360ms ease-in; }
+
+    @keyframes fadeIn{ from { opacity: 0; transform: translateY(6px); } to { opacity:1; transform: none; } }
+
+    .prev, .next{
+      -webkit-appearance: none;
+      appearance: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #e53935; /* red circular background */
+      color: #fff; /* text color fallback for screen readers */
+      border: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+    }
+
+    /* Arrow glyphs are styled via an inner span so the red button background is preserved */
+    .prev .arrow, .next .arrow{
+      display:inline-block;
+      background-image: linear-gradient(180deg, #ffd700 0%, #ffed4e 50%, #d4af37 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    /*    border-bottom: 2px solid #dc143c; */
-      color: #dc143c !important;
-    }
-    
-  /*  tr:nth-child(even){
-      background: rgba(255,215,0,0.05);
-    }*/
-    
-    tr:hover{
-      background: rgba(252,228,225,0.5);
+      color: transparent;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+      font-weight:700;
+      font-size: 22px;
+      line-height: 1;
     }
 
-    h1,h2{
+    .prev{ left: 14px; }
+    .next{ right: 14px; }
+
+    .prev:hover, .prev:focus, .next:hover, .next:focus{
+      background-color: #b71c1c; outline: none; transform: translateY(-50%) scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .prev:focus-visible, .next:focus-visible{ box-shadow: 0 0 0 4px rgba(255,215,0,0.18); }
+
+    .dots{ text-align: center; padding: 12px 0 18px; }
+    .dot{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffb3b3; /* light red */
+      margin: 0 6px;
+      cursor: pointer;
+      border: 0;
+      transition: transform 150ms ease, background 600ms ease;
+    }
+    .dot:hover, .dot:focus{ transform: scale(1.15); background: #ff8a80; }
+    .dot.active{ background: #c62828; }
+
+    h1,h2,h3{
       color:#dc143c !important;
       -webkit-text-fill-color:#8B0011 !important;
       background:none !important;
      /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4); */
-    }
-    
+    }    
     p{
       color:#dc143c !important;
       -webkit-text-fill-color:#8B0011 !important;
       background:none !important;
+      text-align: left;
      /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4);*/
     }
 
-    .signs12Img{
-      max-width:80px;
-    }
 /* Responsive font sizes for small screens */
 @media (max-width: 520px) {
   h1 { font-size: clamp(20px, 6vw, 32px); }
   h2 { font-size: clamp(16px, 4vw, 24px); }
-  td, th { padding: 8px; font-size: 14px; }
+
 }
+
+    /* Responsive tweaks */
+    @media (max-width:900px){
+      .slides{ height: 620px; }
+      .slide img{ max-height: 360px; }
+    }
+    @media (max-width:700px){
+      .slides{ height: auto; }
+      .slide img{ max-height: 240px; }
+      .prev, .next{ width:36px; height:36px; font-size:18px; }
+    }
+  
   </style>
 </head>
 <body>
 
     <div class="content">
-      
+      <h2 style="text-align:center; margin-top:32px; color:#8B0011; -webkit-text-fill-color:#8B0011; background:none;">Chinese New Year Decorations</h2>
+      <section class="slideshow" aria-label="Decoration slideshow">
+        <div class="slides">
+
+          <article class="slide active" data-title="Lanterns" data-desc="Red lanterns symbolize happiness and good fortune.">
+            <h3 class="caption">Red Lanterns 红灯笼</h3>
+            <img src="deco/redLatern.png" alt="Red Lanterns">
+            <div class="caption">
+              <p>Red lanterns symbolize good fortune, happiness, vitality, prosperity, and warding off evil spirits, making them central to celebrations like the New Year
+                and Lantern Festival.
+              </p>
+            </div>
+          </article>
+
+          <article class="slide" data-title="Paper Cuttings" data-desc="Traditional paper cuttings with auspicious patterns for the New Year.">
+             <h3 class="caption">Paper Cuttings 窗花</h3>
+            <img src="deco/chuanghua.png" alt="Paper Cuttings">
+            <div class="caption">
+              <h2>Paper Cuttings</h2>
+              <p>Chinese paper-cutting, known as Jianzhi (剪纸), is one of China’s most cherished folk arts, carrying over 1,500 years of history. 
+                As the Lunar New Year approaches, this delicate craft transforms homes into vibrant galleries of red and white, symbolizing luck,
+                 prosperity, and the joy of a fresh start. Jianzhi are traditionally pasted onto windows, earning them the nickname 
+                 "window flowers." When the winter sun shines through the paper, it casts beautiful, complex shadows into the home, creating a warm
+                  and festive atmosphere.</p>
+            </div>
+          </article>
+
+          <article class="slide" data-title="Couplets" data-desc="Handwritten couplets (chunlian) wish prosperity and health.">
+            <h3 class="caption">Spring Couplets 春联</h3>
+            <img src="deco/duilian.png" alt="Couplets">
+            <div class="caption">
+              <p>Chinese spring couplets (春联) are poetic verses, typically red paper with black or gold calligraphy,
+                 hung on doorways during the Lunar New Year to bring luck and ward off evil, featuring two parallel lines with matching structure, 
+                 number of characters, and contrasting tones, plus a horizontal scroll (横批) above, all expressing wishes for prosperity and happiness</p>
+            </div>
+          </article>
+
+        </div>
+
+        <button class="prev" aria-label="Previous slide"><span class="arrow" aria-hidden="true">‹</span></button>
+        <button class="next" aria-label="Next slide"><span class="arrow" aria-hidden="true">›</span></button>
+
+        <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+      </section>
+
+      <p style="text-align:center;color:#222;opacity:0.9;margin-top:12px;font-size:0.95rem;">Tip: replace the image paths in the slideshow with your actual images inside the <code>pic/</code> folder.</p>
     </div>
 
+    <script>
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      const dotsContainer = document.querySelector('.dots');
+      let idx = slides.findIndex(s => s.classList.contains('active'));
+      if(idx < 0) idx = 0;
+
+      function makeDots(){
+        slides.forEach((s,i)=>{
+          const d = document.createElement('button');
+          d.className = 'dot' + (i===idx ? ' active' : '');
+          d.setAttribute('aria-label', 'Show slide '+(i+1));
+          d.addEventListener('click', ()=> go(i));
+          dotsContainer.appendChild(d);
+        });
+      }
+
+      function update(){
+        slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+        Array.from(dotsContainer.children).forEach((d,i)=> d.classList.toggle('active', i===idx));
+      }
+
+      function go(n){
+        idx = (n + slides.length) % slides.length;
+        update();
+      }
+      function next(){ go(idx+1); }
+      function prev(){ go(idx-1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') prev();
+        else if(e.key === 'ArrowRight') next();
+      });
+
+      // simple touch / swipe support
+      let startX = null;
+      const slidesEl = document.querySelector('.slides');
+      slidesEl.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; });
+      slidesEl.addEventListener('touchend', (e)=>{
+        if(startX === null) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if(Math.abs(diff) > 50){ if(diff > 0) prev(); else next(); }
+        startX = null;
+      });
+
+      makeDots();
+
+      // optional autoplay with pause on hover/focus
+      let autoplay = true;
+      let timer = null;
+      function startAuto(){ if(!autoplay) return; timer = setInterval(next, 5000); }
+      function stopAuto(){ clearInterval(timer); timer = null; }
+
+      const slideshowEl = document.querySelector('.slideshow');
+      slideshowEl.addEventListener('mouseenter', stopAuto);
+      slideshowEl.addEventListener('mouseleave', startAuto);
+      slideshowEl.addEventListener('focusin', stopAuto);
+      slideshowEl.addEventListener('focusout', startAuto);
+
+      startAuto();
+    })();
+    </script>
 
 </body>
 </html>
