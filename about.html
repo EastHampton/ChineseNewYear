@@ -55,10 +55,32 @@
             color: var(--cny-red);
             font-weight: bold;
             text-decoration: none;
+            /* ADDED: Allow email to break */
+            word-break: break-all;
+            display: inline-block;
         }
 
         .email-link:hover {
             text-decoration: underline;
+        }
+
+        /* ADDED: Mobile responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
