@@ -31,15 +31,15 @@
 
    /* Main Data Tables */
 .contentTable {
+  width: 100%; /* Important for mobile */
   max-width: 800px;
   border-collapse: separate;
   border-spacing: 0;
-  background-color: var(--bg-white);
+  background-color: white; /* Fallback if var fails */
   border: 2px solid var(--cny-gold);
-  border-radius: 0 0 12px 12px;
-  overflow: hidden; /* Ensures rounded corners work */
+  border-radius: 0 12px 12px 12px; /* Square top-left corner */
+  overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  margin-bottom: 40px;
 }
 
 .contentTable th {
@@ -91,22 +91,31 @@
 
 /* Tab Buttons */
 .tab-button {
-  flex: 1;
+ flex: 1;
   padding: 15px;
   border: 2px solid var(--cny-gold);
-  background: rgba(255, 250, 240, 0.8);
+  border-bottom: none;
+  background: rgba(255, 250, 240, 0.9);
   color: var(--cny-red);
   font-weight: bold;
   cursor: pointer;
   border-radius: 12px 12px 0 0;
-  transition: all 0.3s ease;
   font-size: 1.1rem;
-
   transition: all 0.2s ease;
-  font-size: 1.1rem;
-  position: relative;
-  top: 2px; /* Pushes the button down to "sit" on the table border */
-  z-index: 1;
+}
+
+
+
+/* Hide content by default */
+.tab-content {
+  display: none !important;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Show active content */
+.tab-content.active {
+  display: block !important;
+  animation: fadeIn 0.4s ease;
 }
 
 /* Active Tab Style */
@@ -115,6 +124,7 @@
   /* This makes the transition from tab to table seamless */
 }
 
+
 .tab-button.active {
   background: var(--cny-red);
   color: white;
@@ -122,16 +132,6 @@
   z-index: 2; /* Ensures the active tab sits on top of the border */
 }
 
-/* Hide content by default */
-.tab-content {
-  display: none;
-  animation: fadeIn 0.4s ease;
-}
-
-/* Show active content */
-.tab-content.active {
-  display: block;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -141,13 +141,11 @@
 
 /* Mobile Adjustments */
 @media (max-width: 700px) {
-  .content {
-    max-width: 100%;
-    margin-left: 0;
-    padding: 15px;
-  }
-  .cursiveFont h1 { font-size: 2rem; }
-  .contentTable th, .contentTable td { padding: 10px; font-size: 0.85rem; }
+ .content { padding: 10px; margin-left: 0; }
+  .tab-button { padding: 10px 5px; font-size: 0.9rem; }
+  /* This prevents the table from pushing out the sides of the phone */
+  .contentTable { font-size: 0.8rem; }
+  .contentTable td { padding: 10px 5px; }
 }
 
 
@@ -175,7 +173,7 @@
   </div>
 
   <div id="program" class="tab-content active">
-  <table class="contentTable" >
+    <table class="contentTable" >
       <thead>
           <th>Time</th>
           <th>Activity</th>
@@ -317,7 +315,7 @@
       </table>
   </div>
 
-  <div id="menu" class="tab-content"></div>
+  <div id="menu" class="tab-content">
     <table  class="contentTable" >
     <thead>
       <tr>
