@@ -15,71 +15,132 @@
       background-attachment: fixed;
     }
 
+/* Main container for your text content */
 .content {
-  width: 100%;
-  box-sizing: border-box;
+  max-width: 550px;    /* Limits width so it doesn't cover the horse on the right */
+  margin-left: 5%;    /* Adds a little breathing room from the left edge */
+  margin-right: auto; /* Pushes everything to the left */
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Keeps content left-aligned */
+  box-sizing: border-box;
 }
 
-    table{
-      width:100%;
-      max-width:1000px;
-      border-collapse: collapse;
-     /* background: rgba(0,0,0,0.7);
-      margin: 20px 10px; */
-     /* border: 2px solid #ffd700; */
-     border: none; /* Removes all borders from table, th, and td elements */
-    border-collapse: collapse; /* Ensures single borders collapse, which works well with 'none' */
-    table-layout: auto; /* Allows columns to shrink to fit text */
-    }
-    
-    th, td{
-      padding: 12px;
-      text-align: left;
-     /* border: 1px solid rgba(139,0,0,0.5); */
-      color: #dc143c;
-      background-image: none !important;
-      -webkit-text-fill-color: #8B0011 !important;
-    /*  text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 6px rgba(220,20,60,0.4); */
-    }
-    
-    th{
-      background: linear-gradient(180deg, #dc143c 0%, #b71c1c 50%, #8b0000 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    /*    border-bottom: 2px solid #dc143c; */
-      color: #dc143c !important;
-    }
+/* Make the table and headings align left */
+.cursiveFont {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  color:var(--cny-red);
 
-    h1,h2{
-      color:var(--cny-red)!important;
-      -webkit-text-fill-color:var(--cny-red) !important;
-      background:none !important;
-      font-family: 'Pacifico', cursive;
-     /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4); */
-    }
+}
+
+.cursiveFont h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+
+}
+
+/* The Volunteer Div - Semi-transparent and Left-Aligned */
+.volunteer-list {
+  background-color: rgba(255, 250, 240, 0.4); /* 85% opacity */
+  border: 3px double #d4af37;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.volunteer-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.volunteer-list li {
+  margin-bottom: 20px;
+  padding-left: 35px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.volunteer-list li::before {
+  content: "🏮";
+  position: absolute;
+  left: 0;
+}
+
+/* Festive Buttons */
+.volunteer-list a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #b30000;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.volunteer-list a:hover {
+  background-color: #ffcc00;
+  color: #b30000 !important;
+  transform: translateY(-2px);
+}
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+  .content {
+    max-width: 100%; /* On phones, use the full width */
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .cursiveFont h1 { font-size: 1.8rem; }
+  
+  .volunteer-list a {
+    display: block; /* Make buttons full width on mobile for easy tapping */
+    text-align: center;
+  }
+}
+
 
 
   </style>
 </head>
 <body>
 <div class="content">
-     <table class="cursiveFont"> 
-      <th><h1>2026 Year of Horse</h1></th>
-      <tr>
-        <td>
-            <h2>Saturday, Feb 28th 5pm-7pm</h2>
-            <h2>East Hampton Club House</h2>
-            <h2>2055 Kinsmon Dr,</h2>
-            <h2>Marietta, Georgia 30062</h2>
-        </td>
-      </tr>
-    </table>
+  <table class="cursiveFont"> 
+    <tr>
+      <td>
+        <h1>2026 Year of the Horse</h1>
+        <h2>Saturday, Feb 1st 5pm-7pm</h2>
+        <h2>East Hampton Club House</h2>
+        <h2>2055 Kinsmon Dr,</h2>
+        <h2>Marietta, Georgia 30062</h2>
+      </td>
+    </tr>
+  </table>
+
+  <div class="volunteer-list">
+    <p style="font-weight: bold;  font-size: 1.1em; margin-top: 0;">
+      🧧 We need your help to make this event a success!
+    </p>
+    <ul>
+      <li>
+        <strong>Volunteers:</strong> Help with setup, greeting, and activities! <br>
+        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61586686-sing/" target="_blank" rel="noopener noreferrer">Sign Up Here</a>
+      </li>
+      <li>
+        <strong>Teen Lion Dance:</strong> Ages 12+. Coaching and equipment provided! 🦁 <br>
+        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61648454-performance" target="_blank" rel="noopener noreferrer">Sign Up to Perform</a>
+      </li>
+      <li>
+        <strong>Elementary Singing:</strong> Learn and sing Chinese songs! 🎤 <br>
+        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61648454-performance" target="_blank" rel="noopener noreferrer">Sign Up to Sing</a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 </body>
