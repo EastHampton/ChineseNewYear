@@ -8,9 +8,11 @@
   <style>
     /* Page-specific styles for 2025.html */
     body{
+      margin: 0;
+      padding: 0;
       background-image: url('happySnake.png');
       background-size: cover;
-      background-position: center;
+      background-position: center right;
       background-repeat: no-repeat;
       background-attachment: fixed;
 
@@ -19,10 +21,10 @@
     }
 
     .content{
-      max-width: 1000px; /* Constrained so it doesn't cover the horse on the right */
+      max-width: 800px; /* Constrained so it doesn't cover the horse on the right */
       margin-left: 5%;    /* Adds a little breathing room from the left edge */
       margin-right: auto; /* Pushes everything to the left */
-      padding: 20px;
+      padding: 40px 20px;
       box-sizing: border-box;
     }
     
@@ -30,12 +32,12 @@
 
    /* Main Data Tables */
 .contentTable {
-  width: 100%;
+  max-width: 800px;
   border-collapse: separate;
   border-spacing: 0;
   background-color: var(--bg-white);
   border: 2px solid var(--cny-gold);
-  border-radius: 12px;
+  border-radius: 0 0 12px 12px;
   overflow: hidden; /* Ensures rounded corners work */
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   margin-bottom: 40px;
@@ -49,10 +51,11 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.9rem;
+ 
 }
 
 .contentTable td {
-  padding: 14px 18px;
+  padding: 20px;
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   vertical-align: top;
   color: #333;
@@ -80,9 +83,10 @@
 
 /* Tab Container */
 .tabs {
+  max-width: 800px;
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 /* Tab Buttons */
@@ -94,16 +98,28 @@
   color: var(--cny-red);
   font-weight: bold;
   cursor: pointer;
-  border-radius: 10px 10px 0 0;
+  border-radius: 12px 12px 0 0;
   transition: all 0.3s ease;
   font-size: 1.1rem;
+
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  position: relative;
+  top: 2px; /* Pushes the button down to "sit" on the table border */
+  z-index: 1;
 }
 
 /* Active Tab Style */
+.tab-content.active .contentTable {
+  border-top-left-radius: 0; 
+  /* This makes the transition from tab to table seamless */
+}
+
 .tab-button.active {
   background: var(--cny-red);
   color: white;
   border-color: var(--cny-red);
+  z-index: 2; /* Ensures the active tab sits on top of the border */
 }
 
 /* Hide content by default */
@@ -140,7 +156,7 @@
 <body>
 <div class="content">
   <table class="cursiveFont">
-    <th><h1>2025 Year of Snake</h1></th>
+    <thead><h1>2025 Year of Snake</h1></thead>
     <tr>
       <td>
         <h2>Saturday, Feb 1st 5pm-7pm</h2>
@@ -150,263 +166,267 @@
       </td>
     </tr>
   </table>
-</div>
-<div class="tabs">
+
+
+
+  <div class="tabs">
     <button class="tab-button active" onclick="openTab(event, 'program')">🏮 Program</button>
     <button class="tab-button" onclick="openTab(event, 'menu')">🥢 Dinner Menu</button>
   </div>
 
   <div id="program" class="tab-content active">
- <h2  id="program-schedule" style="color:var(--cny-red); border-left: 5px solid var(--cny-gold); padding-left: 10px;">Program Schedule</h2>
- <table class="contentTable" >
-     <thead>
-        <th>Time</th>
-        <th>Activity</th>
-      </thead>
-      <tr>
-        <td>
-        4:55 PM
-        </td>
-        <td>
-        Sign-in Process Begins，Guests start arriving and signing in.
-        </td>
-      </tr>
-    
-      <tr>
-        <td>
-        5:00 PM
-        </td>
-        <td>
-       Meal Service Begins. Activity Stations Open: Paper Cutting, Calligraphy, Photo Booth. Guests, especially kids, are encouraged to participate in the activities.
-      </td>
-      </tr>
-
-     <tr>
-        <td>
-     
-        </td>
-        <td>
-          Continued availability of Paper Cutting, Calligraphy, and Photo Booth. Continuous Meal Service and snacks for new arrivals.
-        </td>
-      </tr>
-
+  <table class="contentTable" >
+      <thead>
+          <th>Time</th>
+          <th>Activity</th>
+        </thead>
+        <tr>
+          <td>
+          4:55 PM
+          </td>
+          <td>
+          Sign-in Process Begins，Guests start arriving and signing in.
+          </td>
+        </tr>
       
-     <tr>
-        <td>
-          5:10 </br> PM
+        <tr>
+          <td>
+          5:00 PM
+          </td>
+          <td>
+        Meal Service Begins. Activity Stations Open: Paper Cutting, Calligraphy, Photo Booth. Guests, especially kids, are encouraged to participate in the activities.
         </td>
-        <td>
-        Official Start of Scheduled Performances and Activities
-       
-        Welcome Announcement: A brief speech to officially start the event. Recognition.  Introduction of the day's activities.
-        </td>
-      </tr>
+        </tr>
 
       <tr>
-        <td>
-          5:13 </br> PM 
-        </td>
-        <td>
-        Introduction to Peking opera And performer 
-     
-       Lesily Lei **邢蕾 (Xing Lei)** a special guest all the way from Vancouver, Canada. 
-        </td>
-      </tr>  
+          <td>
+      
+          </td>
+          <td>
+            Continued availability of Paper Cutting, Calligraphy, and Photo Booth. Continuous Meal Service and snacks for new arrivals.
+          </td>
+        </tr>
 
+        
       <tr>
-        <td>
-          5:15 </br> PM
-        </td>
-        <td>
-        Peking Opera Performance
-        A captivating Peking Opera performance showcasing traditional theater with vibrant costumes and dramatic expressions.
-       <ul>
-        <li>《杨门女将·探谷》 (The Female Generals of the Yang Family - Exploring the Valley)</li>
-        <li>《捧印》 (Holding the Seal): Mu Guiying bravely takes up the role of general during a national crisis.</li>
-        <li>《苏三起解》 (Su San's Escort): The story of Su San, a famous courtesan, who is wrongfully imprisoned and laments her fate while being escorted.</li>
-         </ul>
-       </td>
+          <td>
+            5:10 </br> PM
+          </td>
+          <td>
+          Official Start of Scheduled Performances and Activities
+        
+          Welcome Announcement: A brief speech to officially start the event. Recognition.  Introduction of the day's activities.
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-         5:25 </br> PM
-        </td>
-        <td>
-          Calligraphy Performance. A graceful demonstration of Chinese calligraphy, illustrating the beauty and artistry of traditional writing techniques.
-        </td>
-      </tr>
+        <tr>
+          <td>
+            5:13 </br> PM 
+          </td>
+          <td>
+          Introduction to Peking opera And performer 
+      
+        Lesily Lei **邢蕾 (Xing Lei)** a special guest all the way from Vancouver, Canada. 
+          </td>
+        </tr>  
 
-      <tr>
-        <td>
-           5:40 </br> PM
-        </td>
-        <td>
-            Peking opera Performance:
-          <ul>  
-          <li>《凤还巢》 (The Phoenix Returns to the Nest): Cheng Xue'e, the second daughter, refuses to flee with her stepmother to the Zhu family, expressing her determination to maintain her virtue.
-          <li>《坐宫》 (Sitting in the Palace):</li>
-          </li>The story of Princess Tie Jing of the Liao Dynasty, who helps her husband steal military orders to escape back to Song.</li>
-          <li>《天女散花》 (Celestial Maiden Scattering Flowers):Describes the sights seen by a celestial maiden traveling from the Land of Fragrance to the city of Vaisali.</li>
+        <tr>
+          <td>
+            5:15 </br> PM
+          </td>
+          <td>
+          Peking Opera Performance
+          A captivating Peking Opera performance showcasing traditional theater with vibrant costumes and dramatic expressions.
+        <ul>
+          <li>《杨门女将·探谷》 (The Female Generals of the Yang Family - Exploring the Valley)</li>
+          <li>《捧印》 (Holding the Seal): Mu Guiying bravely takes up the role of general during a national crisis.</li>
+          <li>《苏三起解》 (Su San's Escort): The story of Su San, a famous courtesan, who is wrongfully imprisoned and laments her fate while being escorted.</li>
           </ul>
         </td>
-      </tr>
 
-      <tr>
-        <td>
-        5:50 </br> PM
-        </td>
-        <td>
-         Storytelling: The Legend of Chinese New Year.
-         Engaging session about the origins and traditions of Chinese New Year.
-        </td>
-      </tr>
+        <tr>
+          <td>
+          5:25 </br> PM
+          </td>
+          <td>
+            Calligraphy Performance. A graceful demonstration of Chinese calligraphy, illustrating the beauty and artistry of traditional writing techniques.
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-        6:00 </br> PM 
-        </td>
-        <td>
-        Learning Chinese New Year Greetings.
-        An interactive session for kids to learn and practice Chinese New Year greetings. Giving out Red Envelopes: Kids receive red envelopes, an important part of the new year  tradition.
-        </td>
-      </tr>
+        <tr>
+          <td>
+            5:40 </br> PM
+          </td>
+          <td>
+              Peking opera Performance:
+            <ul>  
+            <li>《凤还巢》 (The Phoenix Returns to the Nest): Cheng Xue'e, the second daughter, refuses to flee with her stepmother to the Zhu family, expressing her determination to maintain her virtue.
+            <li>《坐宫》 (Sitting in the Palace):</li>
+            </li>The story of Princess Tie Jing of the Liao Dynasty, who helps her husband steal military orders to escape back to Song.</li>
+            <li>《天女散花》 (Celestial Maiden Scattering Flowers):Describes the sights seen by a celestial maiden traveling from the Land of Fragrance to the city of Vaisali.</li>
+            </ul>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-        6:02 </br> PM
-        </td>
-        <td>
-         Decoration of the Dragon.
-         Opportunity for guests, especially children, to decorate a dragon for the parade.
-      </tr>
+        <tr>
+          <td>
+          5:50 </br> PM
+          </td>
+          <td>
+          Storytelling: The Legend of Chinese New Year.
+          Engaging session about the origins and traditions of Chinese New Year.
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-        6:15 </br> PM
-        </td>
-        <td>
-         Dragon Parade
-         Vibrant procession around the event area.
-      </tr>
+        <tr>
+          <td>
+          6:00 </br> PM 
+          </td>
+          <td>
+          Learning Chinese New Year Greetings.
+          An interactive session for kids to learn and practice Chinese New Year greetings. Giving out Red Envelopes: Kids receive red envelopes, an important part of the new year  tradition.
+          </td>
+        </tr>
 
+        <tr>
+          <td>
+          6:02 </br> PM
+          </td>
+          <td>
+          Decoration of the Dragon.
+          Opportunity for guests, especially children, to decorate a dragon for the parade.
+        </tr>
+
+        <tr>
+          <td>
+          6:15 </br> PM
+          </td>
+          <td>
+          Dragon Parade
+          Vibrant procession around the event area.
+        </tr>
+
+        <tr>
+          <td>
+          6:30 </br> PM
+          </td>
+          <td>
+          Learning Chinese New Year Greetings again. 
+          An interactive session for kids to learn and practice Chinese New Year greetings. Giving out Red Envelopes: Kids receive red envelopes, an important part of the new year  tradition.
+        </tr>
+      </table>
+  </div>
+
+  <div id="menu" class="tab-content"></div>
+    <table id="menu" class="contentTable" >
+    <thead>
       <tr>
-        <td>
-        6:30 </br> PM
-        </td>
-        <td>
-         Learning Chinese New Year Greetings again. 
-         An interactive session for kids to learn and practice Chinese New Year greetings. Giving out Red Envelopes: Kids receive red envelopes, an important part of the new year  tradition.
+        <th>#</th>
+        <th>Name</th>
+        <th>Typical Ingredients</th>
+        <th>Vegetarian</th>
       </tr>
-    </table>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Dry-Fried Green Beans </br>干煸四季豆</td>
+        <td>Green beans, garlic, ginger, soy sauce, chili, and preserved vegetables (optional).</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Home-Style Tofu </br> 家常豆腐</td>
+        <td>Tofu, garlic, ginger, soy sauce, oyster sauce (use vegetarian version), vegetables.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stir-Fried Mixed Vegetables</br>  炒全素</td>
+        <td>Assorted vegetables (e.g., carrots, broccoli, mushrooms), garlic, and soy sauce.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Vegetable Lo Mein </br> 菜捞面</td>
+        <td>Noodles, mixed vegetables, soy sauce, oyster sauce (use vegetarian version), sesame oil.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Vegetable Fried Rice </br> 菜炒饭</td>
+        <td>Rice, mixed vegetables, soy sauce, garlic, and optional egg.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Shanghai Spring Rolls </br> 上海春卷</td>
+        <td>Spring roll wrappers, shredded vegetables, soy sauce (omit meat for vegetarian).</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>White Rice </br> 白饭</td>
+        <td>Steamed white rice.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Vegetarian Dumpling </br> 素菜饺子</td>
+        <td>Chives, eggs, white flour dough.</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Pork Dumpling </br> 猪肉饺子</td>
+        <td>Minced cabbage, ground pork, white flour dough.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Salt and Pepper Fish Fillet </br> 椒盐鱼片</td>
+        <td>Fish fillet, salt, pepper, garlic, green onions, chili, cornstarch, and oil.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Stir-Fried Chicken in Sauce </br> 酱爆鸡丁</td>
+        <td>Chicken, soy sauce, oyster sauce, garlic, ginger, sugar, and vegetables like peppers.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Beef with Broccoli </br> 芥蓝牛</td>
+        <td>Beef slices, broccoli, garlic, oyster sauce, soy sauce, and oil.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Sesame Chicken </br> 芝麻鸡</td>
+        <td>Chicken, sesame seeds, soy sauce, sugar, vinegar, cornstarch, and oil.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Sweet and Sour Pork </br> 咕老肉</td>
+        <td>Pork, bell peppers, pineapple, vinegar, sugar, ketchup, soy sauce, and cornstarch.</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Dessert </br> 甜点</td>
+        <td>Pie-Apple pie, Almond cookies, Rice Crackers.</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="background: white; padding: 10px; border-radius: 8px; border-left: 4px solid var(--cny-gold);">
+       ⚠️ <em>Note: Veg dumplings and some desserts contain eggs.</em>
+    </p>
+  
+  </div>
+
 </div>
-
-<div id="menu" class="tab-content"></div>
-  <h2  id="menu" style="color:var(--cny-red); border-left: 5px solid var(--cny-gold); padding-left: 10px;">Dinner Menu</h2>
-  <p>Please note that veg dumplings and some Dessert contain eggs. </p>
-  <table id="menu" class="contentTable" >
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Typical Ingredients</th>
-      <th>Vegetarian</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Dry-Fried Green Beans </br>干煸四季豆</td>
-      <td>Green beans, garlic, ginger, soy sauce, chili, and preserved vegetables (optional).</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Home-Style Tofu </br> 家常豆腐</td>
-      <td>Tofu, garlic, ginger, soy sauce, oyster sauce (use vegetarian version), vegetables.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Stir-Fried Mixed Vegetables</br>  炒全素</td>
-      <td>Assorted vegetables (e.g., carrots, broccoli, mushrooms), garlic, and soy sauce.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Vegetable Lo Mein </br> 菜捞面</td>
-      <td>Noodles, mixed vegetables, soy sauce, oyster sauce (use vegetarian version), sesame oil.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Vegetable Fried Rice </br> 菜炒饭</td>
-      <td>Rice, mixed vegetables, soy sauce, garlic, and optional egg.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Shanghai Spring Rolls </br> 上海春卷</td>
-      <td>Spring roll wrappers, shredded vegetables, soy sauce (omit meat for vegetarian).</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>White Rice </br> 白饭</td>
-      <td>Steamed white rice.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Vegetarian Dumpling </br> 素菜饺子</td>
-      <td>Chives, eggs, white flour dough.</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Pork Dumpling </br> 猪肉饺子</td>
-      <td>Minced cabbage, ground pork, white flour dough.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Salt and Pepper Fish Fillet </br> 椒盐鱼片</td>
-      <td>Fish fillet, salt, pepper, garlic, green onions, chili, cornstarch, and oil.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>Stir-Fried Chicken in Sauce </br> 酱爆鸡丁</td>
-      <td>Chicken, soy sauce, oyster sauce, garlic, ginger, sugar, and vegetables like peppers.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>Beef with Broccoli </br> 芥蓝牛</td>
-      <td>Beef slices, broccoli, garlic, oyster sauce, soy sauce, and oil.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>Sesame Chicken </br> 芝麻鸡</td>
-      <td>Chicken, sesame seeds, soy sauce, sugar, vinegar, cornstarch, and oil.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>Sweet and Sour Pork </br> 咕老肉</td>
-      <td>Pork, bell peppers, pineapple, vinegar, sugar, ketchup, soy sauce, and cornstarch.</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>Dessert </br> 甜点</td>
-      <td>Pie-Apple pie, Almond cookies, Rice Crackers.</td>
-      <td>Yes</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
  <script>
 function openTab(evt, tabName) {
   var i, tabContent, tabButtons;
