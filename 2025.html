@@ -78,6 +78,51 @@
   font-weight: bold;
 }
 
+/* Tab Container */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Tab Buttons */
+.tab-button {
+  flex: 1;
+  padding: 15px;
+  border: 2px solid var(--cny-gold);
+  background: rgba(255, 250, 240, 0.8);
+  color: var(--cny-red);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+/* Active Tab Style */
+.tab-button.active {
+  background: var(--cny-red);
+  color: white;
+  border-color: var(--cny-red);
+}
+
+/* Hide content by default */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Show active content */
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* Mobile Adjustments */
 @media (max-width: 700px) {
   .content {
@@ -105,9 +150,13 @@
       </td>
     </tr>
   </table>
+</div>
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab(event, 'program')">🏮 Program</button>
+    <button class="tab-button" onclick="openTab(event, 'menu')">🥢 Dinner Menu</button>
+  </div>
 
-
-
+  <div id="program" class="tab-content active">
  <h2  id="program-schedule" style="color:var(--cny-red); border-left: 5px solid var(--cny-gold); padding-left: 10px;">Program Schedule</h2>
  <table class="contentTable" >
      <thead>
@@ -249,7 +298,9 @@
          An interactive session for kids to learn and practice Chinese New Year greetings. Giving out Red Envelopes: Kids receive red envelopes, an important part of the new year  tradition.
       </tr>
     </table>
+</div>
 
+<div id="menu" class="tab-content"></div>
   <h2  id="menu" style="color:var(--cny-red); border-left: 5px solid var(--cny-gold); padding-left: 10px;">Dinner Menu</h2>
   <p>Please note that veg dumplings and some Dessert contain eggs. </p>
   <table id="menu" class="contentTable" >
@@ -354,8 +405,28 @@
     </tr>
   </tbody>
 </table>
+</div>
 
- </div>
+ <script>
+function openTab(evt, tabName) {
+  var i, tabContent, tabButtons;
 
+  // Hide all tab content
+  tabContent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].classList.remove("active");
+  }
+
+  // Remove "active" class from all buttons
+  tabButtons = document.getElementsByClassName("tab-button");
+  for (i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+
+  // Show the specific tab and add "active" class to the clicked button
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
 </body>
 </html>
