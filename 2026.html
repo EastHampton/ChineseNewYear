@@ -6,108 +6,34 @@
   <title>East Hampton Chinese New Year Party — 2026</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    body{margin:0;padding:0;background-image:url('horseLightPink1.png');background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;background-color:#F8E7E2}
+    .content{max-width:1000px;margin-left:5%;margin-right:auto;padding:20px;box-sizing:border-box}
+    .cursiveFont{width:100%;text-align:left;border-collapse:collapse}
+    .volunteer-list{background-color:rgba(255,250,240,0.4);border-radius:15px;padding:20px;margin-top:25px;box-shadow:0 4px 15px rgba(0,0,0,0.2);width:100%;box-sizing:border-box}
+    .volunteer-list ul{list-style:none;padding:0}
+    .volunteer-list li{margin-bottom:20px;padding-left:35px;position:relative;line-height:1.5}
+    .volunteer-list li::before{content:"🏮";position:absolute;left:0}
+    .volunteer-list a{display:inline-block;margin-top:10px;padding:10px 20px;background-color:#b30000;color:white!important;text-decoration:none;border-radius:50px;font-weight:bold;transition:0.3s ease}
+    .volunteer-list a:hover{background-color:#ffcc00;color:#b30000!important;transform:translateY(-2px)}
+    .tabs{max-width:800px;display:flex;gap:5px;margin-bottom:-2px}
+    .tab-button{flex:1;padding:15px;border:2px solid var(--cny-gold);border-bottom:none;background:rgba(255,250,240,0.9);color:var(--cny-red);font-weight:bold;cursor:pointer;border-radius:12px 12px 0 0;font-size:1.1rem;transition:all .2s ease}
+    .tab-content{display:none!important;animation:fadeIn .4s ease;width:100%;max-width:800px;box-sizing:border-box}
+    .tab-content.active{display:block!important}
+    .tab-button.active{background:var(--cny-red);color:white;border-color:var(--cny-red);z-index:2}
+    .tab-button.active{margin-bottom:-2px}
 
-    body{
-      margin: 0;
-      padding: 0;
-      background-image: url('horseLightPink1.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #F8E7E2;
-    }
+    /* Content table styling to match 2025.html */
+     .contentTable{width:100%;max-width:800px;border-collapse:separate;border-spacing:0;background-color:(255, 250, 240, 0.4);border:2px solid var(--cny-gold);border-radius:0 0 12px 12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.15);margin-top:-2px;table-layout:fixed;word-break:break-word;overflow-wrap:break-word}
+    .contentTable th{background-color:var(--cny-red);color:white;padding:15px;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;text-align:left}
+    .contentTable td{padding:20px;border-bottom:1px solid rgba(212,175,55,0.4);vertical-align:top;color:#333;line-height:1.5}
+    .contentTable tr:nth-child(even){background-color:rgba(179,0,0,0.05)}
+    .contentTable td:first-child{font-weight:bold;color:var(--cny-red);white-space:nowrap;width:100px}
+    .tab-content.active .contentTable{border-top-left-radius:0}
 
-/* Main container for your text content */
-.content {
-  max-width: 1000px;    /* Limits width so it doesn't cover the horse on the right */
-  margin-left: 5%;    /* Adds a little breathing room from the left edge */
-  margin-right: auto; /* Pushes everything to the left */
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-
-.cursiveFont {
-  width: 100%;
-  text-align: left;
-  border-collapse: collapse;
-
-}
-
-
-/* The Volunteer Div - Semi-transparent and Left-Aligned */
-.volunteer-list {
-  background-color: rgba(255, 250, 240, 0.4); /* 85% opacity */
-  border: 3px double #d4af37;
-  border-radius: 15px;
-  padding: 20px;
-  margin-top: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  width: 100%; 
-  box-sizing: border-box;
-}
-
-.volunteer-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.volunteer-list li {
-  margin-bottom: 20px;
-  padding-left: 35px;
-  position: relative;
-  line-height: 1.5;
-}
-
-.volunteer-list li::before {
-  content: "🏮";
-  position: absolute;
-  left: 0;
-}
-
-/* Festive Buttons */
-.volunteer-list a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #b30000;
-  color: white !important;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.volunteer-list a:hover {
-  background-color: #ffcc00;
-  color: #b30000 !important;
-  transform: translateY(-2px);
-}
-
-/* MOBILE RESPONSIVE FIXES */
-@media (max-width: 700px) {
-  .content {
-    max-width: 100%; /* On phones, use the full width */
-    margin-left: 0;
-    padding: 10px;
-  }
-  
-  .volunteer-list a {
-    display: block; /* Make buttons full width on mobile for easy tapping */
-    text-align: center;
-  }
-
-    body {
-    background-attachment: scroll; /* Change to scroll on mobile */
-    background-size: 100% auto; /* Prevent stretching */
-    background-position: top center; /* Keep at top */
-  }
-}
-
-
-
+    /* Ensure tabs, volunteer area and menu use same max width */
+    .tabs,.contentTable,.volunteer-list{max-width:800px}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @media (max-width:700px){.content{max-width:100%;margin-left:0;padding:10px}.tab-button{padding:10px 5px;font-size:.9rem}.volunteer-list a{display:block;text-align:center}body{background-attachment:scroll;background-size:100% auto;background-position:top center}}
   </style>
 </head>
 <body>
@@ -123,27 +49,158 @@
       </td>
     </tr>
   </table>
-
-  <div class="volunteer-list">
-    <p style="font-weight: bold;  font-size: 1.1em; margin-top: 0;">
-      🧧 We need your help to make this event a success!
-    </p>
-    <ul>
-      <li>
-        <strong>Volunteers:</strong> Help with setup, greeting, and activities! <br>
-        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61586686-sing/" target="_blank" rel="noopener noreferrer">Sign Up Here</a>
-      </li>
-      <li>
-        <strong>Teen Lion Dance:</strong> Ages 12+. Coaching and equipment provided! 🦁 <br>
-        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61648454-performance" target="_blank" rel="noopener noreferrer">Sign Up to Perform</a>
-      </li>
-      <li>
-        <strong>Elementary Singing:</strong> Learn and sing Chinese songs! 🎤 <br>
-        <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61702943-join" target="_blank" rel="noopener noreferrer">Sign Up to Sing</a>
-      </li>
-    </ul>
+  <div class="tabs">
+    <button class="tab-button active" onclick="openTab(event, 'volunteer')">🏮 Volunteer Sign Up</button>
+    <button class="tab-button" onclick="openTab(event, 'menu')">🥢 Dinner Menu</button>
   </div>
-</div>
 
+  <div id="volunteer" class="tab-content active">
+    <div class="volunteer-list contentTable">
+      <p style="font-weight: bold;  font-size: 1.1em; margin-top: 0;">
+        🧧 We need your help to make this event a success!
+      </p>
+      <ul>
+        <li>
+          <strong>Volunteers:</strong> Help with setup, greeting, and activities! <br>
+          <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61586686-sing/" target="_blank" rel="noopener noreferrer">Sign Up Here</a>
+        </li>
+        <li>
+          <strong>Teen Lion Dance:</strong> Ages 12+. Coaching and equipment provided! 🦁 <br>
+          <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61648454-performance" target="_blank" rel="noopener noreferrer">Sign Up to Perform</a>
+        </li>
+        <li>
+          <strong>Elementary Singing:</strong> Learn and sing Chinese songs! 🎤 <br>
+          <a href="https://www.signupgenius.com/go/10C044EAFA829A5F9C52-61702943-join" target="_blank" rel="noopener noreferrer">Sign Up to Sing</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="menu" class="tab-content">
+    <table  class="contentTable" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Typical Ingredients</th>
+        <th>Dietary Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <tr>
+          <td>1</td>
+          <td>Salt and Pepper Fish Fillet </br> 椒盐鱼片</td>
+          <td>White fish fillet, bell peppers, onions, salt & pepper seasoning</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Chicken Stir-fry in Savory Sauce </br> 酱爆鸡丁</td>
+          <td>Diced chicken, savory bean sauce, cucumber, peanuts</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Beef with Broccoli </br> 芥蓝牛</td>
+          <td>Sliced beef, Chinese broccoli (Gai Lan), ginger, oyster sauce.</td>
+          <td></td>
+        </tr>
+             
+       <tr>
+          <td>4</td>
+          <td>Sesame Chicken </br> 芝麻鸡</td>
+          <td>Crispy battered chicken, sweet & tangy glaze, toasted sesame seeds</td>
+          <td></td>
+       </tr>
+
+       <tr>
+          <td>5</td>
+          <td>Dry-Fried Green Beans </br>干煸四季豆</td>
+          <td>String beans, minced garlic, preserved vegetables</td>
+          <td>Vegetarian</td>
+        </tr>
+                      
+      <tr>
+          <td>6</td>
+          <td>Home-Style Tofu </br> 家常豆腐</td>
+          <td>Fried tofu blocks, wood ear mushrooms, carrots, bamboo shoots</td>
+          <td>Vegetarian</td>
+      </tr>
+      
+      
+      <tr>
+        <td>7</td>
+        <td>Mixed Vegetable Stir-fry</br> 炒全素</td>
+        <td>Broccoli, snow peas, carrots, mushrooms, water chestnuts</td>
+        <td>Vegetarian</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Crispy Fried Pork </br> 小酥肉</td>
+        <td>Pork strips, Sichuan peppercorns, flour/starch coating.</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>Vegetable Lo Mein </br> 菜捞面</td>
+        <td>Egg noodles, cabbage, carrots, onions, soy sauce</td>
+        <td>Vegetarian</td>
+      </tr>
+      
+      <tr>
+        <td>10</td>
+        <td>Vegetable Fried Rice </br> 菜炒饭</td>
+        <td>Steamed rice, peas, corn, carrots, green onions</td>
+        <td>Vegetarian</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Shanghai Spring Rolls </br> 上海春卷</td>
+        <td>Crispy wrapper, shredded cabbage, mushrooms, carrots</td>
+        <td>Vegetarian</td>
+      </tr>
+
+      <tr>
+        <td>12</td>
+        <td>Vegetable Dumplings </br> 素饺子</td>
+        <td>Assorted minced vegetables, flour wrapper.</td>
+        <td>Contains Egg</td>
+      </tr>
+   <tr>
+        <td>13</td>
+        <td>Chinese Desserts </br> 中式甜点</td>
+        <td>Selection of pie apple cakes, or pastries.</td>
+        <td>Contains Egg</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  </div>
+  
+<script>
+function openTab(evt, tabName) {
+  var i, tabContent, tabButtons;
+
+  // Hide all tab content
+  tabContent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].classList.remove("active");
+  }
+
+  // Remove "active" class from all buttons
+  tabButtons = document.getElementsByClassName("tab-button");
+  for (i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+
+  // Show the specific tab and add "active" class to the clicked button
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
 </body>
 </html>
