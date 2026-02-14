@@ -27,7 +27,8 @@
     .contentTable th{background-color:var(--cny-red);color:white;padding:15px;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;text-align:left}
     .contentTable td{padding:20px;border-bottom:1px solid rgba(212,175,55,0.4);vertical-align:top;color:#333;line-height:1.5}
     .contentTable tr:nth-child(even){background-color:rgba(179,0,0,0.05)}
-    .contentTable td:first-child{font-weight:bold;color:var(--cny-red);white-space:nowrap;width:100px}
+    .contentTable td:first-child{font-weight:bold;}
+
     .tab-content.active .contentTable{border-top-left-radius:0}
 
     /* Ensure tabs, volunteer area and menu use same max width */
@@ -77,10 +78,14 @@
   </div>
   
   <div id="menu" class="tab-content">
-    <table  class="contentTable" >
+    <table class="contentTable">
+    <colgroup>
+      <col style="width:30%">
+      <col style="width:50%">
+      <col style="width:20%">
+    </colgroup>
     <thead>
       <tr>
-        <th>#</th>
         <th>Name</th>
         <th>Typical Ingredients</th>
         <th>Dietary Note</th>
@@ -89,42 +94,36 @@
     <tbody>
       <tr>
         <tr>
-          <td>1</td>
           <td>Salt and Pepper Fish Fillet </br> 椒盐鱼片</td>
           <td>White fish fillet, bell peppers, onions, salt & pepper seasoning</td>
           <td></td>
         </tr>
 
         <tr>
-          <td>2</td>
           <td>Chicken Stir-fry in Savory Sauce </br> 酱爆鸡丁</td>
           <td>Diced chicken, savory bean sauce, cucumber, peanuts</td>
           <td></td>
         </tr>
 
         <tr>
-          <td>3</td>
           <td>Beef with Broccoli </br> 芥蓝牛</td>
           <td>Sliced beef, Chinese broccoli (Gai Lan), ginger, oyster sauce.</td>
           <td></td>
         </tr>
              
        <tr>
-          <td>4</td>
           <td>Sesame Chicken </br> 芝麻鸡</td>
           <td>Crispy battered chicken, sweet & tangy glaze, toasted sesame seeds</td>
           <td></td>
        </tr>
 
        <tr>
-          <td>5</td>
           <td>Dry-Fried Green Beans </br>干煸四季豆</td>
           <td>String beans, minced garlic, preserved vegetables</td>
           <td>Vegetarian</td>
         </tr>
                       
       <tr>
-          <td>6</td>
           <td>Home-Style Tofu </br> 家常豆腐</td>
           <td>Fried tofu blocks, wood ear mushrooms, carrots, bamboo shoots</td>
           <td>Vegetarian</td>
@@ -132,46 +131,40 @@
       
       
       <tr>
-        <td>7</td>
         <td>Mixed Vegetable Stir-fry</br> 炒全素</td>
         <td>Broccoli, snow peas, carrots, mushrooms, water chestnuts</td>
         <td>Vegetarian</td>
       </tr>
       <tr>
-        <td>8</td>
         <td>Crispy Fried Pork </br> 小酥肉</td>
         <td>Pork strips, Sichuan peppercorns, flour/starch coating.</td>
         <td></td>
       </tr>
 
       <tr>
-        <td>9</td>
         <td>Vegetable Lo Mein </br> 菜捞面</td>
         <td>Egg noodles, cabbage, carrots, onions, soy sauce</td>
         <td>Vegetarian</td>
       </tr>
       
       <tr>
-        <td>10</td>
         <td>Vegetable Fried Rice </br> 菜炒饭</td>
         <td>Steamed rice, peas, corn, carrots, green onions</td>
         <td>Vegetarian</td>
       </tr>
       <tr>
-        <td>11</td>
         <td>Shanghai Spring Rolls </br> 上海春卷</td>
         <td>Crispy wrapper, shredded cabbage, mushrooms, carrots</td>
         <td>Vegetarian</td>
       </tr>
 
       <tr>
-        <td>12</td>
         <td>Vegetable Dumplings </br> 素饺子</td>
         <td>Assorted minced vegetables, flour wrapper.</td>
         <td>Contains Egg</td>
       </tr>
    <tr>
-        <td>13</td>
+
         <td>Chinese Desserts </br> 中式甜点</td>
         <td>Selection of pie apple cakes, or pastries.</td>
         <td>Contains Egg</td>
