@@ -6,7 +6,7 @@
   <title>East Hampton Chinese New Year Party — Decorations</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page-specific styles for chineseZodiac.html */
+    /* Page-specific styles for pics.html */
     body{
       background-image: url('ruyi.png');
       background-size: cover;
@@ -22,87 +22,239 @@
       padding: 32px 24px;
       overflow-y: auto;
       max-height: 100vh;
-      align-items: flex-start; /* Keeps content left-aligned */
-    }
-    
-    table{
-      width:100%;
-      max-width:1200px;
-      border-collapse: collapse;
-     /* background: rgba(0,0,0,0.7);
-      margin: 20px 10px; */
-     /* border: 2px solid #ffd700; */
-     border: none; /* Removes all borders from table, th, and td elements */
-    border-collapse: collapse; /* Ensures single borders collapse, which works well with 'none' */
-    table-layout: auto; /* Allows columns to shrink to fit text */
-    }
-    
-    th, td{
-      padding: 12px;
-      text-align: left;
-     /* border: 1px solid rgba(139,0,0,0.5); */
-      color: #dc143c;
-      background-image: none !important;
-      -webkit-text-fill-color: #8B0011 !important;
-    /*  text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 6px rgba(220,20,60,0.4); */
-    }
-    
-    th{
-      background: linear-gradient(180deg, #dc143c 0%, #b71c1c 50%, #8b0000 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    /*    border-bottom: 2px solid #dc143c; */
-      color: #dc143c !important;
-    }
-    
-  /*  tr:nth-child(even){
-      background: rgba(255,215,0,0.05);
-    }*/
-    
-    tr:hover{
-      background: rgba(252,228,225,0.5);
+      align-items: center;
     }
 
     h1,h2{
       color:#dc143c !important;
       -webkit-text-fill-color:#8B0011 !important;
       background:none !important;
-     /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4); */
-    }
-    
-    p{
-      color:#dc143c !important;
-      -webkit-text-fill-color:#8B0011 !important;
-      background:none !important;
-     /* text-shadow:0 1px 2px rgba(0,0,0,0.6), 0 0 6px rgba(220,20,60,0.4);*/
     }
 
-.photo-album {
-  display: grid;
-  /* This creates columns that are at least 250px wide */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
+    /* Slideshow container styles */
+    .slideshow{
+      max-width: 900px;
+      width: 100%;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.0);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      overflow: hidden;
+      position: relative;
+      -webkit-backdrop-filter: blur(4px) saturate(1.10);
+      backdrop-filter: blur(3px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      background-clip: padding-box;
+    }
 
-.photo-item {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  background: #f9f9f9;
-}
+    .slides{ 
+      position: relative; 
+      height: 600px; 
+      min-height: 400px; 
+    }
 
-.photo-item:hover {
-  transform: scale(1.03); /* Subtle zoom effect on hover */
-}
+    .slide{
+      display: none;
+      position: absolute;
+      inset: 0;
+      padding: 60px 24px 24px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide img{
+      max-height: 480px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto 12px;
+      border-radius: 6px;
+    }
+
+    .caption{ 
+      text-align: center; 
+      padding: 8px 16px;
+      color: #333;
+    }
+    .caption h3{ 
+      margin: 6px 0; 
+      font-size: 1.2rem; 
+      color: var(--cny-red);
+    }
+    .caption p{ 
+      margin: 0; 
+      color: #333; 
+    }
+
+    .slide.active{ 
+      display: flex !important; 
+      animation: fadeIn 360ms ease-in; 
+    }
+
+    @keyframes fadeIn{ 
+      from { opacity: 0; transform: translateY(6px); } 
+      to { opacity:1; transform: none; } 
+    }
+
+    .prev, .next{
+      -webkit-appearance: none;
+      appearance: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #e53935;
+      color: #fff;
+      border: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+      z-index: 10;
+    }
+
+    .prev .arrow, .next .arrow{
+      display:inline-block;
+      background-image: linear-gradient(180deg, #ffd700 0%, #ffed4e 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+      font-weight:700;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .prev{ left: 14px; }
+    .next{ right: 14px; }
+
+    .prev:hover, .prev:focus, .next:hover, .next:focus{
+      background-color: #b71c1c; 
+      outline: none; 
+      transform: translateY(-50%) scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .prev:focus-visible, .next:focus-visible{ 
+      box-shadow: 0 0 0 4px rgba(255,215,0,0.18); 
+    }
+
+    .dots{ 
+      text-align: center; 
+      padding: 12px 0 18px; 
+    }
+    .dot{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffb3b3;
+      margin: 0 6px;
+      cursor: pointer;
+      border: 0;
+      transition: transform 150ms ease, background 600ms ease;
+    }
+    .dot:hover, .dot:focus{ 
+      transform: scale(1.15); 
+      background: #ff8a80; 
+    }
+    .dot.active{ 
+      background: #c62828; 
+    }
+
+    .year-title{
+      text-align: center;
+      margin: 20px 0 10px 0;
+      font-size: 1.5rem;
+      color: var(--cny-red);
+    }
+
+    @media (max-width:900px){
+      .slides{ height: 500px; }
+      .slide img{ max-height: 380px; }
+    }
+    @media (max-width:700px){
+      .slides{ height: auto; }
+      .slide img{ max-height: 240px; }
+      .prev, .next{ width:36px; height:36px; font-size:18px; }
+      .year-title{ font-size: 1.2rem; }
+    }
+
+    /* Tab styles for gallery */
+    .gallery-tabs {
+      display: flex;
+      gap: 0;
+      margin: 0 auto 0 auto;
+      max-width: 900px;
+      justify-content: center;
+    }
+
+    .gallery-tab-button {
+      flex: 1;
+      padding: 15px;
+      border: 3px solid var(--cny-gold);
+      border-bottom: none;
+      background: rgba(255, 250, 240, 0.9);
+      color: var(--cny-red);
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 12px 12px 0 0;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .gallery-tab-button {
+      margin-right: -3px;
+    }
+
+    .gallery-tab-button:last-child {
+      margin-right: 0;
+    }
+
+    .gallery-tab-button.active {
+      background: var(--cny-red);
+      color: white;
+      border-color: var(--cny-red);
+      z-index: 2;
+    }
+
+    .gallery-tab-button:hover {
+      background: rgba(220, 20, 60, 0.1);
+    }
+
+    .gallery-tab-content {
+      display: none !important;
+      animation: fadeIn 0.4s ease;
+      max-width: 900px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .gallery-tab-content.active {
+      display: block !important;
+    }
+
+    .gallery-tab-content .slideshow {
+      border: 3px solid var(--cny-gold);
+      border-top: none;
+      margin: 0;
+      border-radius: 0 0 10px 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
 .photo-item img {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* Ensures images don't look stretched */
+  object-fit: cover;
   display: block;
 }
 
@@ -114,136 +266,197 @@
   margin: 0;
 }
 
-/* Style the background overlay */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
-}
-
-/* Style the enlarged image */
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-  margin-top: 5%;
-}
-
-/* Close button */
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-  /* Caption styles for lightbox: centered under the image */
-  #caption {
-    display: block;
-    margin: 10px auto;
-    max-width: 80%;
-    color: #ffffff;
-    text-align: center;
-    font-size: 16px;
-    padding-top: 10px;
-    word-wrap: break-word;
-  }
-
-  /* Small-screen adjustments */
-  @media (max-width: 520px) {
-    #caption {
-      font-size: 14px;
-      max-width: 90%;
-      padding-top: 8px;
-    }
-    .modal-content {
-      max-width: 95%;
-      max-height: 70%;
-      margin-top: 4%;
-    }
-  }
-
   </style>
 </head>
 <body>
 
-<div id="lightbox" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="full-img">
-  <div id="caption"></div>
+<div class="content">
+  <h1>📸 Gallery</h1>
+
+  <div class="gallery-tabs">
+    <button class="gallery-tab-button" onclick="openGalleryTab(event, 'tab2024')">2024</button>
+    <button class="gallery-tab-button" onclick="openGalleryTab(event, 'tab2025')">2025</button>
+    <button class="gallery-tab-button active" onclick="openGalleryTab(event, 'tab2026')">2026</button>
+  </div>
+
+  <div id="tab2024" class="gallery-tab-content">
+    <section class="slideshow" aria-label="2024 photos gallery">
+      <div class="slides">
+        <article class="slide active">
+          <img src="./pic/2024/2024_1.jpg" alt="Moments from 2024">
+          <div class="caption">
+            <p>Moments from 2024</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2024/2024_2.jpg" alt="Moments from 2024">
+          <div class="caption">
+            <p>Moments from 2024</p>
+          </div>
+        </article>
+      </div>
+      <button class="prev" aria-label="Previous slide"><span class="arrow" aria-hidden="true">‹</span></button>
+      <button class="next" aria-label="Next slide"><span class="arrow" aria-hidden="true">›</span></button>
+      <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+    </section>
+  </div>
+
+  <div id="tab2025" class="gallery-tab-content">
+    <section class="slideshow" aria-label="2025 photos gallery">
+      <div class="slides">
+        <article class="slide active">
+          <img src="./pic/2025/door.jpg" alt="Front door decorated for Chinese New Year">
+          <div class="caption">
+            <p>Lanterns and Banner</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2025/snack.jpg" alt="Snacks">
+          <div class="caption">
+            <p>Snacks</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2025/food.jpg" alt="Food">
+          <div class="caption">
+            <p>Yummy Food</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2025/performance.jpg" alt="Performance">
+          <div class="caption">
+            <p>Beijing Opera Performance</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2025/writing.jpg" alt="writing">
+          <div class="caption">
+            <p>Calligraphy</p>
+          </div>
+        </article>
+        <article class="slide">
+          <img src="./pic/2025/crafting.jpg" alt="crafting">
+          <div class="caption">
+            <p>Paper Cutting</p>
+          </div>
+        </article>
+      </div>
+      <button class="prev" aria-label="Previous slide"><span class="arrow" aria-hidden="true">‹</span></button>
+      <button class="next" aria-label="Next slide"><span class="arrow" aria-hidden="true">›</span></button>
+      <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+    </section>
+  </div>
+
+  <div id="tab2026" class="gallery-tab-content active">
+    <section class="slideshow" aria-label="2026 photos gallery">
+      <div class="slides">
+        <article class="slide active">
+          <div class="caption">
+            <p style="margin-top: 200px; font-size: 1.2em;">Coming soon...</p>
+          </div>
+        </article>
+      </div>
+      <button class="prev" aria-label="Previous slide"><span class="arrow" aria-hidden="true">‹</span></button>
+      <button class="next" aria-label="Next slide"><span class="arrow" aria-hidden="true">›</span></button>
+      <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+    </section>
+  </div>
+
 </div>
-
-<div class="photo-album">
-  <div class="photo-item">
-    <img src="./pic/door.jpg" alt="Front door decorated for Chinese New Year">
-    <p class="caption">Laterns and Banner</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/snack.jpg" alt="Snacks">
-    <p class="caption">Snacks</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/food.jpg" alt="Food">
-    <p class="caption">Yummy Food</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/performance.jpg" alt="Performance">
-    <p class="caption">Peiking Opera Performance</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/writing.jpg" alt="writing">
-    <p class="caption">Calligraphy</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/crafting.jpg" alt="crafting">
-    <p class="caption">Paper Cutting</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/2024_1.jpg" alt="2024_1">
-    <p class="caption">Moments from 2024</p>
-  </div>
-  <div class="photo-item">
-    <img src="./pic/2024_2.jpg" alt="2024_2">
-    <p class="caption">Moments from 2024</p>
-  </div>
-  </div>
 <script>
-// Get elements
-const modal = document.getElementById("lightbox");
-const modalImg = document.getElementById("full-img");
-const captionText = document.getElementById("caption");
-const closeBtn = document.querySelector(".close");
+// Tab switching function for gallery
+function openGalleryTab(evt, tabName) {
+  var i, tabContent, tabButtons;
 
-// Add click event to all gallery images
-document.querySelectorAll('.photo-item img').forEach(image => {
-  image.onclick = function() {
-    modal.style.display = "block";
-    modalImg.src = this.src; // Set the large image to the same as the clicked one
-    captionText.innerHTML = this.alt; // Use alt text as caption
+  // Hide all tab content
+  tabContent = document.getElementsByClassName("gallery-tab-content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].classList.remove("active");
   }
-});
 
-// Close when the 'X' is clicked
-closeBtn.onclick = function() {
-  modal.style.display = "none";
+  // Remove "active" class from all buttons
+  tabButtons = document.getElementsByClassName("gallery-tab-button");
+  for (i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove("active");
+  }
+
+  // Show the specific tab and add "active" class to the clicked button
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
 }
 
-// Close when clicking anywhere outside the image
-modal.onclick = function(event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-}
+// Initialize slideshows
+(function(){
+  const slideshows = document.querySelectorAll('.slideshow');
+  
+  slideshows.forEach(slideshow => {
+    const slides = Array.from(slideshow.querySelectorAll('.slide'));
+    const prevBtn = slideshow.querySelector('.prev');
+    const nextBtn = slideshow.querySelector('.next');
+    const dotsContainer = slideshow.querySelector('.dots');
+    let idx = slides.findIndex(s => s.classList.contains('active'));
+    if(idx < 0) idx = 0;
+
+    function makeDots(){
+      slides.forEach((s,i)=>{
+        const d = document.createElement('button');
+        d.className = 'dot' + (i===idx ? ' active' : '');
+        d.setAttribute('aria-label', 'Show slide '+(i+1));
+        d.addEventListener('click', ()=> go(i));
+        dotsContainer.appendChild(d);
+      });
+    }
+
+    function update(){
+      slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+      Array.from(dotsContainer.children).forEach((d,i)=> d.classList.toggle('active', i===idx));
+    }
+
+    function go(n){
+      idx = (n + slides.length) % slides.length;
+      update();
+    }
     
+    function next(){ go(idx+1); }
+    function prev(){ go(idx-1); }
+
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') prev();
+      else if(e.key === 'ArrowRight') next();
+    });
+
+    // Touch/swipe support
+    let startX = null;
+    const slidesEl = slideshow.querySelector('.slides');
+    slidesEl.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; });
+    slidesEl.addEventListener('touchend', (e)=>{
+      if(startX === null) return;
+      const endX = e.changedTouches[0].clientX;
+      const diff = endX - startX;
+      if(Math.abs(diff) > 50){ if(diff > 0) prev(); else next(); }
+      startX = null;
+    });
+
+    makeDots();
+
+    // Autoplay with pause on hover/focus
+    let autoplay = true;
+    let timer = null;
+    function startAuto(){ if(!autoplay) return; timer = setInterval(next, 6000); }
+    function stopAuto(){ clearInterval(timer); timer = null; }
+
+    slideshow.addEventListener('mouseenter', stopAuto);
+    slideshow.addEventListener('mouseleave', startAuto);
+    slideshow.addEventListener('focusin', stopAuto);
+    slideshow.addEventListener('focusout', startAuto);
+
+    startAuto();
+  });
+})();
 </script>
 </body>
 </html>
